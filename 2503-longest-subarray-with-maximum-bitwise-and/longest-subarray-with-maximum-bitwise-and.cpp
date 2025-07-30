@@ -2,15 +2,15 @@ class Solution {
 public:
     int longestSubarray(vector<int>& nums) {
         int maxVal = *max_element(nums.begin(), nums.end());
-        int streak = 0, maxStreak = 0;
-        for (int num : nums) {
-            if (num == maxVal) {
-                streak++;
-                if (streak > maxStreak) maxStreak = streak;
-            } else {
-                streak = 0;
+        int count =1, maxc=1;
+
+        for(int i=1; i<nums.size(); i++){
+            if(nums[i] == nums[i-1] && nums[i] == maxVal) count++;
+            if(nums[i] != nums[i-1] && nums[i-1] == maxVal){
+                count = 1;
             }
+            maxc = max(maxc,count);
         }
-        return maxStreak;
+        return maxc;
     }
 };

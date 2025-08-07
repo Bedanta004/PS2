@@ -1,7 +1,7 @@
 class Solution {
 public:
     int totalMoney(int n) {
-        int m=1, sum =0;
+        int m=1, sum =1;
         
         for(int i=1; i<n; i++){
             if(i%7 == 0){
@@ -10,6 +10,6 @@ public:
             m++;
             sum += m;
         }
-        return sum+1;
+        return sum;
     }
 };

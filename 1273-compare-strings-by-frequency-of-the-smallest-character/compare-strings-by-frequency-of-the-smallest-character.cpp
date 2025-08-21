@@ -30,8 +30,8 @@ public:
         unordered_map<int,int> frq;
 
         for (int x : a) {
-        auto it = upper_bound(b.begin(),b.end(), x);
-        ans.push_back(b.end() - it);
+        auto t = upper_bound(b.begin(),b.end(), x);
+        ans.push_back(b.end() - t);
     }
     return ans;
     }

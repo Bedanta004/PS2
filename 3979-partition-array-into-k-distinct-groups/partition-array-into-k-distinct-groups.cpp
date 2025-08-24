@@ -5,11 +5,11 @@ public:
         if(n%k != 0) return false;
 
         unordered_map<int,int> freq;
-        for(int num : nums) freq[num]++;
+        for(int num : nums) {
+            freq[num]++;
+            if(freq[num] > n/k) return false;
+            }
 
-        for(auto i : freq){
-            if(i.second > n/k) return false;
-        }
         return true;
     }
 };

@@ -9,6 +9,9 @@ public:
                 maxWeight -= w;
                 m--;
             }
+            else{
+                break;
+            }
         }
         return count;
     }

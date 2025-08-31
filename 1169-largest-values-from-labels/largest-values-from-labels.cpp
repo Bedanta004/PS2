@@ -12,10 +12,10 @@ public:
 
         unordered_map<int, int> used;
         int sum = 0;
-        for (int i = 0; i < n && numWanted > 0; i++) {
+        for (int i = 0; i < n; i++) {
             int val = items[i].first;
             int label = items[i].second;
-            if (used[label] < useLimit) {
+            if (used[label] < useLimit && numWanted > 0) {
                 sum += val;
                 used[label]++;
                 numWanted--;

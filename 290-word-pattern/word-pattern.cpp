@@ -8,7 +8,7 @@ string check1(string str1){
     string st = "", s1 = "";
     for(int i=0; i<str1.size(); i++){
         if(isalpha(str1[i])) st += str1[i];
-        if((str1[i] == ' ' || i==n) && !st.empty()){
+        if((str1[i] == ' ' || i==n) ){
             if(!mp.count(st)){
                 mp[st] = ch;
                 s1 += ch;

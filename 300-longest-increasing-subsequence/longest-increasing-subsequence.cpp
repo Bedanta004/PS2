@@ -52,6 +52,45 @@ int solveUsingTabulation(vector<int>& num){
     return dp[0][-1+1];
 }
 
+// int solveUsingSpace(vector<int> &num){
+//     int n = num.size();
+//     vector<int> currRow(n+1, 0);
+//     vector<int> nextRow(n+1, 0);
+
+//     for(int curr_ind=n-1; curr_ind>=0; curr_ind--){
+//         for(int prev_ind=curr_ind-1; prev_ind >= -1; prev_ind--){
+//             int include = 0;
+//             if(prev_ind == -1 || num[curr_ind] > num[prev_ind]){
+//             include = 1 + nextRow[curr_ind+1][curr_ind+1];
+//         }
+//         //+1 is done with prev index as in loop [rev_ind can go upto -1]
+//         int exclude = 0 + nextRow[curr_ind+1][prev_ind+1];
+//         currRow[curr_ind][prev_ind+1] = max(include,exclude);
+//         }
+//         //shifting
+//         nextRow = currRow;
+//     }
+//     return nextRow[0];
+// }
+
+int solveUsingBinaryS(vector<int> &num){
+    vector<int> ans;
+    //initial state
+    ans.push_back(num[0]);
+    for(int i=1; i<num.size(); i++){
+        if(num[i] > ans.back()){
+            ans.push_back(num[i]);
+        }
+        else{
+            //just bada number exist karta hai
+            int index = lower_bound(ans.begin(), ans.end(), num[i]) - ans.begin();
+            //replace
+            ans[index] = num[i];
+        }
+    }
+    return ans.size();
+}
+
     int lengthOfLIS(vector<int>& nums) {
         int curr = 0;
         int prev = -1;
@@ -61,7 +100,7 @@ int solveUsingTabulation(vector<int>& num){
         //columns is upto n+1 & initializes with -1
         vector<vector<int>> dp(n+1, vector<int>(n+1, -1));
         //int ans = solveUsingMemo(nums,curr,prev, dp);
-        int ans = solveUsingTabulation(nums);
+        int ans = solveUsingBinaryS(nums);
         return ans;
     }
 };

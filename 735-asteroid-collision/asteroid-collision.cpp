@@ -10,19 +10,21 @@ public:
             } else {
                 bool destroyed = false;
                 while(!st.empty() && st.top() > 0){
-                    if(st.top() < -num){
+                    if(st.top() < abs(num)){
                         st.pop(); // positive asteroid destroyed
-                        continue;
-                    } else if(st.top() == -num){
+                        // continue;
+                    }
+                    else if(st.top() == abs(num)){
                         st.pop(); // both destroyed
                         destroyed = true;
                         break;
-                    } else {
+                    }
+                    else {
                         destroyed = true; 
                         break;
                     }
                 }
-                if(!destroyed) st.push(num);
+                if(destroyed == false) st.push(num);
             }
         }
 

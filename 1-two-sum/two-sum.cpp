@@ -1,0 +1,18 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int,int> mp,freq;
+
+        for(int i=0; i<nums.size(); i++){
+            mp[nums[i]] = i;
+            freq[nums[i]]++;
+        }
+
+        for(int i=0; i<nums.size(); i++){
+            if(freq[target-nums[i]] > 0 && mp[target-nums[i]] != i){
+                return {i,mp[target-nums[i]]};
+            }
+        }
+        return {};
+    }
+};

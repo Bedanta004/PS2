@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<long long> mergeAdjacent(vector<int>& nums) {
+        stack<long long> st;
+
+        for(int i = 0; i < nums.size(); ++i){
+            long long cur = nums[i];
+            while(!st.empty() && cur == st.top()){
+                cur += st.top();
+                st.pop();
+            }
+            st.push(cur);
+        }
+
+        vector<long long> ans;
+        while(!st.empty()){
+            ans.push_back(st.top());
+            st.pop();
+        }
+        reverse(ans.begin(), ans.end());
+        return ans;
+    }
+};

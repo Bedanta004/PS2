@@ -9,7 +9,7 @@ public:
         stack<char> st;
 
         for(int i=0; i<s.size(); i++){
-            if(visited.find(s[i]) != visited.end()) continue;
+            if(visited.count(s[i])) continue;
 
             while(!st.empty() && s[i] < st.top() && i < lastOcc[st.top()]){
                 visited.erase(st.top());

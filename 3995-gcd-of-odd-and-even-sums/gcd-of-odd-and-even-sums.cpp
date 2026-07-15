@@ -4,7 +4,7 @@ public:
         int s=n, t=n;
         int odd =0, even =0;
 
-        for(int i=1; i<INT_MAX; i++){
+        for(int i=1; i<=2*n; i++){
             if(s == 0 && t == 0) break;
             else if(i%2 != 0){
                  odd += i;
@@ -15,7 +15,6 @@ public:
                 t--;
             }
         }
-        int ans = gcd(odd,even);
-        return ans;
+        return gcd(odd,even);
     }
 };

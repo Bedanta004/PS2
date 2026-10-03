@@ -73,7 +73,7 @@ int solveUsingTabulation(vector<int>& num){
 //     return nextRow[0];
 // }
 
-int solveUsingBinaryS(vector<int> &num){
+int solveUsingBinarySearch(vector<int> &num){
     vector<int> ans;
     //initial state
     ans.push_back(num[0]);
@@ -99,8 +99,9 @@ int solveUsingBinaryS(vector<int> &num){
         //rows = n+1
         //columns is upto n+1 & initializes with -1
         vector<vector<int>> dp(n+1, vector<int>(n+1, -1));
-        //int ans = solveUsingMemo(nums,curr,prev, dp);
-        int ans = solveUsingBinaryS(nums);
+        int ans = solveUsingMemo(nums,curr,prev, dp);
+        // int ans = solveUsingBinarySearch(nums);
+        // int ans = solveUsingTabulation(nums);
         return ans;
     }
 };

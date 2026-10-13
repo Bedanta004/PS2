@@ -5,9 +5,9 @@ public:
         int mini =589999;
         int diff = 0;
 
-        for(int i=0; i<n-1; i++){
+        for(int i=0; i<n; i++){
             mini = min(mini, prices[i]);
-            diff = max(diff, prices[i+1]-mini);
+            diff = max(diff, prices[i]-mini);
         }
         return diff;
     }

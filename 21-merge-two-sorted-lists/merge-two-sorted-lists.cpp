@@ -10,25 +10,25 @@
  */
 class Solution {
 public:
-void cases(ListNode* list, vector<int>& v){
-    ListNode* t = list;
-
-    while(t){
-        v.push_back(t->val);
-        t = t->next;
-    }
-}
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-    vector<int> v;
-        cases(list1, v);
-        cases(list2, v);
-        sort(v.begin(), v.end());
-        ListNode* dummy = new ListNode(-1);
+        ListNode* dummy = new ListNode (0);
         ListNode* curr = dummy;
-        for (int x : v) {
-            curr->next = new ListNode(x);
+
+        while (list1 && list2){
+            if(list1->val > list2->val){
+                curr->next = list2;
+                list2 = list2->next;
+            }else{
+                curr->next = list1;
+                list1 = list1->next;
+            }
             curr = curr->next;
         }
-        return dummy->next;
+        if(list1) curr->next = list1;
+        else curr->next = list2;
+
+        ListNode* head = dummy->next;
+        delete dummy;
+        return head;
     }
 };
